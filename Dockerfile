@@ -1,4 +1,5 @@
 FROM php:5.6-apache
+LABEL maintainer="Rambabu <rambabu4linux@gmail.com>"
 RUN a2enmod rewrite
 # install the PHP extensions we need
 RUN apt-get update &amp;&amp; apt-get install -y libpng12-dev libjpeg-dev &amp;&amp; rm -rf /var/lib/apt/lists/* \
@@ -18,3 +19,4 @@ COPY docker-entrypoint.sh /entrypoint.sh
 # grr, ENTRYPOINT resets CMD now
 ENTRYPOINT ["/entrypoint.sh"]
 CMD ["apache2-foreground"]
+
